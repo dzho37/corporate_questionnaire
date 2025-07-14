@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+{% for survey in surveys_list %}
+    <h1>{{ survey.title }}</h1>
+    <form action="/" method="post">
+    {% csrf_token %}
+    {% for question in survey.questions.all %}
+        {% if question.type == "SINGLE" %}
+            <fieldset>
+                <legend>{{ question.text }}</legend>
+                    {% for option in question.options.all %}
+                        <div>
+                            <input type="radio" id="{{ option.id }}" name="{{ question.text }}" value="{{ option.text }}" class="single-question question">
+                            <label for="{{ option.id }}">{{ option.text }}</label>
+                        </div>
+                    {% endfor %}
+
+                    {% if question.is_custom_answer %}
+                            <div id="{{ question.id }}" class="custum-question question">
+                                <label for="{{ question.id }}">Свой вариант:</label>
+                                <input type="text" id="{{ question.id }}" name="{{ question.text }}" placeholder="Ваш вариант...">
+                            </div>
+                    {% endif %}
+            </fieldset>
+        {% endif %}
+
+        {% if question.type == "MULTIPLE" %}
+            <fieldset>
+                <legend>{{ question.text }}</legend>
+                    {% for option in question.options.all %}
+                        <div>
+                            <input type="checkbox" id="{{ option.id }}" name="{{ question.text }}" value="{{ option.text }}" class="multiple-question question">
+                            <label for="{{ option.id }}">{{ option.text }}</label>
+                        </div>
+                    {% endfor %}
+
+                    {% if question.is_custom_answer %}
+                            <div id="{{ question.id }}" class="custum-question question">
+                                <label for="{{ question.id }}">Свой вариант:</label>
+                                <input type="text" id="{{ question.id }}" name="{{ question.text }}" placeholder="Ваш вариант...">
+                            </div>
+                    {% endif %}
+            </fieldset>
+        {% endif %}
+
+                {% if question.type == "TEXT" %}
+            <fieldset>
+                <legend>{{ question.text }}</legend>
+                    <div id="{{ question.id }}" class="custum-question question">
+                        <label for="{{ question.id }}">Свой вариант:</label>
+                        <input type="text" id="{{ question.id }}" name="{{ question.text }}" placeholder="Ваш вариант...">
+                    </div>
+            </fieldset>
+        {% endif %}
+    {% endfor %}
+    </form>
+{% endfor %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

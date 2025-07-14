@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static_root/
+.env
+*.env
+*.sqlite3
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+requirements*.txt~
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+.pyvenv/
+.idea/
+.vscode/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VSCode
+.vscode/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+.cache
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Logs
+logs/
+*.log
+
+# Node (если используешь npm/yarn для фронта)
+node_modules/
+*.lock
+
+# Translations (compiled)
+*.mo
+
+# Sphinx docs
+docs/_build/
