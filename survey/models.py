@@ -53,3 +53,15 @@ class Option(models.Model):
 
     def __str__(self):
         return self.text
+    
+
+class Answer(models.Model):
+    question = models.TextField('Вопрос')
+    option = models.TextField('Ответ')
+
+    class Meta:
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"
+    
+    def __str__(self):
+        return f"{self.id}: '{self.question[:30]}': {self.option[:30]}"
